@@ -1,7 +1,7 @@
 from __future__ import annotations
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter
 from app.routes.service import file_service
-from typing import Optional, List
+from typing import Optional
 from pydantic import SecretStr
 
 
