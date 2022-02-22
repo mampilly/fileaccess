@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from app.routes.controller import file_controller
+from app.routes.controller import file_controller, forms_controller
 
 from fastapi import FastAPI
 
@@ -18,3 +18,4 @@ app.add_middleware(
 )
 
 app.include_router(file_controller.router)
+app.include_router(forms_controller.router)
