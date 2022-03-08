@@ -34,6 +34,18 @@ def get_user_details(username, password):
         return {"Error": str(e)}
 
 
+def get_pull_logs(username, password, repository_name):
+    endpoint = "/repos/{}/{}/commits".format(
+        username, repository_name)
+    headers = authentication(username, password)
+    user_details = requests.get(
+        host+endpoint, headers=headers)
+    if user_details.status_code == 200:
+        user_data = user_details.json()
+        return user_data
+    return {"Message": "Issue with username or password", "status_code": user_details.status_code}
+
+
 def fetch_file_details(username, password, repository_name, file_path):
     try:
         if not file_path:

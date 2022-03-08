@@ -20,6 +20,14 @@ async def get_user_details(username: str,
     return file_service.user_details(username, password)
 
 
+@router.get("/merge-logs", tags=["User Details"])
+async def get_user_details(username: str,
+                           password: SecretStr,
+                           repository_name: str):
+    password = password.get_secret_value()
+    return file_service.get_pull_logs(username, password, repository_name)
+
+
 @router.get("/file-details", tags=["File Operations"])
 async def get_file_details(username: str,
                            password: SecretStr,
